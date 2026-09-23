@@ -9,6 +9,7 @@ const creations = [
   { name: "Face à face", category: "Objets détournés", price: 90, image: "gallery/face-a-face.webp", note: "Planche en bois et figurines revisitées, couleurs au choix.", status: "Sur commande" },
   { name: "Pomme Pop", category: "Tableaux", price: 85, image: "gallery/pomme-pop.webp", note: "Composition minimaliste en relief, cadre bicolore.", status: "Sur commande" },
   { name: "Minuit glacé", category: "Horloges", price: 95, image: "gallery/minuit-glace.webp", note: "Plateau décoratif transformé en horloge murale.", status: "Disponible" },
+  { name: "Les Trois Font la Paire", category: "Objets détournés", price: 190, image: "gallery/les-trois-font-la-paire.webp", images: ["gallery/les-trois-font-la-paire.webp", "gallery/les-trois-font-la-paire-detail.webp"], note: "Trois nains aux couleurs pastel réunis sur un socle transparent parsemé de boutons. Une pièce décalée qui détourne les codes du jardin pour en faire un objet de décoration intérieure.", status: "Disponible" },
   { name: "Joyeux Bazar", category: "Objets détournés", price: 240, image: "gallery/joyeux-bazar.webp", note: "À contre-courant, ça déborde : un assemblage sculptural de céramiques détournées, de couleur laquée et de billes en verre.", status: "Disponible" }
 ];
 
@@ -42,6 +43,7 @@ function openCreation(name) {
   document.querySelector("#dialog-price").textContent = `Création personnalisable · À partir de ${selected.price} €`;
   document.querySelector("#dialog-title").textContent = selected.name;
   document.querySelector("#dialog-description").textContent = `${selected.note} Le tarif final dépend du format et des modifications demandées.`;
+  document.querySelector("#dialog-photos").innerHTML = selected.images ? selected.images.map((src, index) => `<img src="${src}" alt="${selected.name} — vue ${index + 1}" loading="lazy">`).join("") : "";
   dialog.showModal();
 }
 
